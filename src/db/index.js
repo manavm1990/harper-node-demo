@@ -43,4 +43,13 @@ export default {
       );
     }
   },
+  delete(id, cb) {
+    client.delete(
+      {
+        table: "books",
+        hashValues: [id],
+      },
+      callback(cb)
+    );
+  },
 };

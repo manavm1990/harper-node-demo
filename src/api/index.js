@@ -38,4 +38,19 @@ router.post("/search", ({ body }, res, next) => {
   });
 });
 
+router.delete("/", ({ body: { id } }, res, next) => {
+  db.delete(id, (err, dbRes) => {
+    if (err) {
+      next(
+        new Error(`
+      ❗Error deleting 🔥 📖
+      ${err.error}
+      `)
+      );
+    }
+    res.status(204);
+    res.json(dbRes);
+  });
+});
+
 export default router;
