@@ -9,8 +9,7 @@ module.exports = {
     sourceType: "module",
   },
   rules: {
-    "import/no-unresolved": [1, { ignore: ["api", "db"] }],
-    "import/prefer-default-export": 1,
+    "import/no-unresolved": [1, { ignore: ["api", "db", "lib"] }],
     "no-unused-vars": ["warn", { varsIgnorePattern: "^_" }],
   },
 };
