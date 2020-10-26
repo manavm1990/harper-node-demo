@@ -4,4 +4,12 @@ import { config } from "dotenv";
 
 config();
 
-console.log(process.env.PORT);
+const app = express();
+
+app.get("/", (_, res) => {
+  res.end("Express Server");
+});
+
+app.listen(process.env.PORT, () => {
+  console.log("Server 🏃🏽‍♂️", process.env.PORT);
+});
