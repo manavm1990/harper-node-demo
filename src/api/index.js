@@ -4,7 +4,11 @@ import db from "db";
 
 const router = new Router();
 
-router.post("/", ({ body: { title, author } }, res, next) => {
+router.get("/", (_, res) => {
+  res.send("📖");
+});
+
+router.post("/add", ({ body: { title, author } }, res, next) => {
   db.add(title, author, (err, dbRes) => {
     if (err) {
       next(
