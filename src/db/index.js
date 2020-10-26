@@ -16,12 +16,14 @@ export default {
     );
   },
   search(searchParams, cb) {
-    const { id: hashValues } = searchParams;
-    if (hashValues) {
+    const { id } = searchParams;
+    if (id) {
       client.searchByHash(
         {
           table: "books",
-          hashValues,
+          hashValues:
+            // ⚠️ MUST be wrapped in an ARRAY
+            [id],
 
           // Only send back 'title'
           attributes: ["title"],
@@ -40,6 +42,5 @@ export default {
         callback(cb)
       );
     }
-    return true;
   },
 };
