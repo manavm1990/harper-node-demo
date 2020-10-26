@@ -9,4 +9,5 @@ module.exports = {
     sourceType: "module",
   },
   rules: { "no-unused-vars": "warn" },
+    "import/no-unresolved": [1, { ignore: ["api", "db"] }],
 };
