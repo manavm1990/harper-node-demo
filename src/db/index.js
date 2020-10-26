@@ -2,7 +2,7 @@ import client from "./client";
 
 export default {
   add(title, author, cb) {
-    return client.insert(
+    client.insert(
       { table: "books", records: [{ title, author }] },
       (err, res) => {
         if (err) {
