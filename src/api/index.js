@@ -14,11 +14,26 @@ router.post("/add", ({ body: { title, author } }, res, next) => {
       next(
         new Error(`
       ❗Error adding ➕ 📖
-      ${err}
+      ${err.error}
       `)
       );
     }
     res.status(201);
+    res.json(dbRes);
+  });
+});
+
+router.post("/search", ({ body }, res, next) => {
+  db.search(body, (err, dbRes) => {
+    if (err) {
+      next(
+        new Error(`
+      ❗Error searching 🔍
+      ${err.error}
+      `)
+      );
+    }
+    res.status(200);
     res.json(dbRes);
   });
 });

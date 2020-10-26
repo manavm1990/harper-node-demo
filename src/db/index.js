@@ -15,10 +15,31 @@ export default {
       callback(cb)
     );
   },
-        } else {
-          cb(null, res);
-        }
-      }
-    );
+  search(searchParams, cb) {
+    const { id: hashValues } = searchParams;
+    if (hashValues) {
+      client.searchByHash(
+        {
+          table: "books",
+          hashValues,
+
+          // Only send back 'title'
+          attributes: ["title"],
+        },
+        callback(cb)
+      );
+    } else {
+      const searchParamsEntries = Object.entries(searchParams);
+      client.searchByValue(
+        {
+          table: "books",
+          searchAttribute: searchParamsEntries[0][0],
+          searchValue: searchParamsEntries[0][1],
+          attributes: ["*"],
+        },
+        callback(cb)
+      );
+    }
+    return true;
   },
 };
