@@ -8,6 +8,8 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: "module",
   },
-  rules: { "no-unused-vars": "warn" },
+  rules: {
     "import/no-unresolved": [1, { ignore: ["api", "db"] }],
+    "no-unused-vars": ["warn", { varsIgnorePattern: "^_" }],
+  },
 };
