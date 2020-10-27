@@ -31,12 +31,12 @@ export default {
         callback(cb)
       );
     } else {
-      const searchParamsEntries = Object.entries(searchParams);
+      const [searchParamsEntry] = Object.entries(searchParams);
       client.searchByValue(
         {
           table: "books",
-          searchAttribute: searchParamsEntries[0][0],
-          searchValue: searchParamsEntries[0][1],
+          searchAttribute: searchParamsEntry[0],
+          searchValue: searchParamsEntry[1],
           attributes: ["*"],
         },
         callback(cb)
